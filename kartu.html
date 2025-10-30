@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kartu Fakta Menarik — Mobil</title>
+  <style>
+    body {
+            background: #ecc97be0;
+            background: linear-gradient(0deg, rgb(233, 179, 119) 5%, rgb(179, 179, 179) 60%);
+            }
+    .card-fakta {
+            max-width: 500px;
+            height: 88.5vh;
+            margin: auto;
+            background: rgb(207, 207, 207);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+            }
+    img.foto {
+        width: 500px;
+        height: 300px;
+        border-radius: 28px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);}
+  </style>
+</head>
+<body>
+  <div class="card-fakta">
+    <img class="foto" id="factImage" src="koenigsegg.jpg" alt="koenigseggcc850" />
+    <div class="content">
+      <h2>Fakta Menarik tentang mobil</h2>
+      <p class="subtitle">Tahukah kamu fakta-fakta unik ini?</p>
+
+      <ul class="facts-list" id="factList">
+        <li>CC850 memiliki transmisi yang paling revolusioner. Koenigsegg menyebutnya Engage Shift System (ESS) yang berbasis pada transmisi Light Speed Transmission (LST). </li>
+        <li>Rasio power-to-weight 1:1: Mesin V8 5.0 liter twin-turbo yang berbasis model Jesko menghasilkan 1.385 HP dan mobil ini memiliki bobot 1.385 kg, menciptakan rasio yang setara antara tenaga dan berat.</li>
+        <li>Desain aerodinamis: Gabungan estetika dan fungsi.</li>
+        <li>Hanya terdapat 50 unit</li>
+      </ul>
+      <button class="btn-next" id="nextFact">🔁 Fakta Selanjutnya</button>
+
+      <div class="card-footer">© 2025 | Fakta Teknologi • Informatika SMP</div>
+    </div>
+  </div>
+
+  <script>
+    const factData = [
+      {
+        image: "Ferrari-LaFerrari.jpg",
+        facts: [
+          "Sistem Penggerak Hibrida: Menggabungkan mesin V12 6,3 liter dengan motor listrik, menghasilkan tenaga gabungan 950 tenaga kuda.",
+          "Kemudi Gaya F1: Roda kemudi dilengkapi berbagai tombol kendali seperti menyalakan mesin, mengatur suspensi, dan lainnya, mirip dengan mobil Formula Satu",
+          "kecepatan tinggi: 0-100km/h < 3 detik",
+          "Hanya ada 499 unit",
+        ]
+      },
+      {
+        image: "PAGANIUTOPIA.jpg",
+        facts: [
+          "Utopia dirancang sebagai tanggapan terhadap permintaan klien setia Pagani yang merindukan pengalaman berkendara yang lebih analog.",
+          "Tidak ada baterai berat atau tenaga hibrida. Hanya mesin V12 twin-turbo 6.0 liter yang luar biasa, dirakit khusus oleh Mercedes-AMG.",
+          "Desain artistik dan seperti analog.",
+          "Hanya terdapat 99 unit",
+        ]
+      },
+      {
+        image: "bugatti.jpg",
+        facts: [
+          "Mesin Hybrid: Merupakan mobil pertama Bugatti yang menggunakan sistem hybrid dengan mesin V16 naturally aspirated yang dipadukan tiga motor listrik, menghasilkan total tenaga 1.775 hp.",
+          "Akselerasi kilat: Mampu berakselerasi dari 0-100 km/jam dalam waktu kurang dari 2 detik dan mencapai 200 km/jam dalam waktu kurang dari 5 detik.",
+          "Hanya terdapat 250 unit produksi",
+          "Nama Tourbillon terinspirasi dari mekanisme jam tangan yang presisi",
+        ]
+      },
+      {
+        image: "mc p1.jpg",
+        facts: [
+          "Sistem Hibrida: P1 menggunakan sistem penggerak hybrid yang menggabungkan mesin V8 twin-turbo dengan motor listrik. Uniknya, motor listrik ini lebih difokuskan untuk menambah tenaga daripada meningkatkan efisiensi bahan bakar, menjadikannya hypercar yang sangat bertenaga.",
+          "DRS (Drag Reduction System): Tombol pada setir dapat mengaktifkan DRS untuk mengurangi hambatan udara dengan mengubah sudut sayap belakang, sehingga meningkatkan kecepatan puncak.",
+          "0-100km/h hanya dalam 2.8 detik",
+          "Hanya ada 375 unit di dunia",
+        ]
+      }
+    ];
+
+    const factList = document.getElementById("factList");
+    const factImage = document.getElementById("factImage");
+    const nextBtn = document.getElementById("nextFact");
+
+    nextBtn.addEventListener("click", () => {
+      factList.classList.add("fade-out");
+      setTimeout(() => {
+        const randomFact = factData[Math.floor(Math.random() * factData.length)];
+        factImage.style.opacity = 0;
+
+        setTimeout(() => {
+          factImage.src = randomFact.image;
+          factImage.style.opacity = 1;
+        }, 400);
+
+        factList.innerHTML = randomFact.facts.map(f => `<li>${f}</li>`).join("");
+        factList.classList.remove("fade-out");
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
